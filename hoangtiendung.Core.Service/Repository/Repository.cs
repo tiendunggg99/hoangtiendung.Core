@@ -61,7 +61,7 @@ namespace hoangtiendung.Core.Service.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<TModel>> Paging(Expression<Func<TModel, bool>> expression,int page,int size)
+        public async Task<IEnumerable<TModel>> Paging(Expression<Func<TModel, bool>> expression, int page, int size)
         {
             if (expression == null)
                 throw new ArgumentNullException("expression");
