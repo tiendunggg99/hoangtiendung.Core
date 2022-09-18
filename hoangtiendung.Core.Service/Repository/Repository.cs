@@ -21,7 +21,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("model");
             TEntity entity = _mapper.Map<TEntity>(model);
             _context.Set<TEntity>().AddAsync(entity);
-            throw new NotImplementedException();
+
         }
 
         public void AddMore(IEnumerable<TModel> models)
@@ -30,7 +30,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("model");
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(models);
             _context.Set<TEntity>().AddRangeAsync(entities);
-            throw new NotImplementedException();
+
         }
 
         public void Delete(TModel model)
@@ -39,7 +39,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("model");
             TEntity entity = _mapper.Map<TEntity>(model);
             _context.Set<TEntity>().Remove(entity);
-            throw new NotImplementedException();
+
         }
 
         public void DeleteMore(IEnumerable<TModel> models)
@@ -48,7 +48,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("model");
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(models);
             _context.Set<TEntity>().RemoveRange(entities);
-            throw new NotImplementedException();
+
         }
 
         public async Task<IEnumerable<TModel>> Find(Expression<Func<TModel, bool>> expression)
@@ -58,7 +58,7 @@ namespace hoangtiendung.Core.Service.Repository
             Expression<Func<TEntity, bool>> expressionEntity = _mapper.Map<Expression<Func<TEntity, bool>>>(expression);
             IEnumerable<TEntity> entities = await _context.Set<TEntity>().Where(expressionEntity).ToListAsync();
             return _mapper.Map<IEnumerable<TModel>>(entities);
-            throw new NotImplementedException();
+
         }
 
         public async Task<IEnumerable<TModel>> Paging(Expression<Func<TModel, bool>> expression, int page, int size)
@@ -68,7 +68,7 @@ namespace hoangtiendung.Core.Service.Repository
             Expression<Func<TEntity, bool>> expressionEntity = _mapper.Map<Expression<Func<TEntity, bool>>>(expression);
             IEnumerable<TEntity> entities = await _context.Set<TEntity>().Where(expressionEntity).Skip(page * size).Take(size).ToListAsync();
             return _mapper.Map<IEnumerable<TModel>>(entities);
-            throw new NotImplementedException();
+
         }
 
 
@@ -77,7 +77,7 @@ namespace hoangtiendung.Core.Service.Repository
             IEnumerable<TEntity> entities = await _context.Set<TEntity>().ToListAsync();
             IEnumerable<TModel> models = _mapper.Map<IEnumerable<TModel>>(entities).ToList();
             return models;
-            throw new NotImplementedException();
+
         }
 
         public async Task<TModel> GetById(Guid id)
@@ -87,13 +87,13 @@ namespace hoangtiendung.Core.Service.Repository
             var entity = await _context.Set<TEntity>().FindAsync(id);
             TModel model = _mapper.Map<TModel>(entity);
             return model;
-            throw new NotImplementedException();
+
         }
 
         public async void SaveChanges()
         {
             await _context.SaveChangesAsync();
-            throw new NotImplementedException();
+
         }
 
         public void Update(TModel model)
@@ -102,7 +102,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("model");
             TEntity entity = _mapper.Map<TEntity>(model);
             _context.Update(entity);
-            throw new NotImplementedException();
+
         }
 
         public void UpdateMore(IEnumerable<TModel> models)
@@ -111,7 +111,7 @@ namespace hoangtiendung.Core.Service.Repository
                 throw new ArgumentNullException("models");
             IEnumerable<TEntity> entities = _mapper.Map<IEnumerable<TEntity>>(models);
             _context.UpdateRange(entities);
-            throw new NotImplementedException();
+
         }
     }
 }
